@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GCC Compass | Product Strategy Deck (Flexiple)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    code, pre { font-family: 'JetBrains Mono', monospace; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between p-4 sm:p-8">
+
+  <!-- Top Navigation & Controls -->
+  <header class="max-w-6xl mx-auto w-full flex items-center justify-between bg-slate-900 border border-slate-800 p-4 rounded-2xl shadow-xl">
+    <div class="flex items-center space-x-3">
+      <div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center font-black text-white text-lg">
+        🧭
+      </div>
+      <div>
+        <h1 class="text-base font-extrabold text-white tracking-tight">GCC COMPASS</h1>
+        <p class="text-[11px] text-blue-400 font-semibold uppercase">Product Strategy Deck • Flexiple</p>
+      </div>
+    </div>
+
+    <!-- Slide indicator & Controls -->
+    <div class="flex items-center space-x-3">
+      <span id="slideIndicator" class="px-3 py-1 rounded-lg bg-blue-500/10 border border-blue-500/20 text-blue-400 font-mono text-xs font-bold">
+        SLIDE 1 OF 10
+      </span>
+      <button id="prevBtn" onclick="prevSlide()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs">
+        ← Prev
+      </button>
+      <button id="nextBtn" onclick="nextSlide()" class="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs">
+        Next →
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Slide Container -->
+  <main class="max-w-6xl mx-auto w-full my-6 flex-1 flex flex-col justify-center">
+    <div id="slideContent" class="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden min-h-[520px] flex flex-col justify-between">
+      <!-- Injected by JavaScript -->
+    </div>
+
+    <!-- Speaker Notes Toggle Box -->
+    <div class="mt-4 bg-amber-950/20 border border-amber-500/30 rounded-2xl p-4 text-xs text-amber-200/90 space-y-1">
+      <div class="font-bold text-amber-400 uppercase tracking-wider text-[10px] flex items-center space-x-1">
+        <span>📝 Speaker Notes & Strategic Rationale:</span>
+      </div>
+      <p id="speakerNotesText" class="leading-relaxed font-sans"></p>
+    </div>
+  </main>
+
+  <!-- Footer Navigation Pills -->
+  <footer class="max-w-6xl mx-auto w-full flex flex-wrap items-center justify-between gap-4 text-xs text-slate-500 pt-2 border-t border-slate-900">
+    <div>Use Arrow Keys (← / →) or Spacebar to navigate slides</div>
+    <div id="slidePills" class="flex items-center space-x-1.5 overflow-x-auto py-1">
+      <!-- Generated pills -->
+    </div>
+    <div>Submission for Flexiple Product Intern Role (Oct 2026)</div>
+  </footer>
+
+  <script>
+    const slides = [
+      {
+        badge: "Executive Summary",
+        title: "Building the Single Source of Truth for India's $100B GCC Revolution",
+        subtitle: "How Flexiple captures the highest-value enterprise tech expansion in the world",
+        metric: { num: "2,000+", label: "Active GCCs in India", sub: "Growing to 2,500+ centres by 2030 ($100B output)" },
+        points: [
+          "India houses over 2,000 Global Capability Centres (GCCs), employing 1.65M+ high-skill professionals and exporting $64.6B annually.",
+          "GCCs have transformed from low-cost back-offices to global innovation headquarters driving core AI, cloud architecture, and mission-critical engineering.",
+          "Despite massive capital inflows, setting up a GCC operates under crippling information asymmetry, relying on whisper networks, opaque retainers, and stale reports.",
+          "GCC Compass creates the verified, sovereign intelligence and transaction exchange for the entire Indian GCC ecosystem."
+        ],
+        notes: "Context for reviewers: India's GCC ecosystem has evolved from classic back-office BPOs into mission-critical global tech nerve centres. Today, more than 2,000 GCCs generate over $60B in annual tech exports. But setting one up is plagued by friction. Our goal with GCC Compass is to build the sovereign, transparent operating system that turns months of confusion into days of clarity."
+      },
+      {
+        badge: "Problem Deep-Dive",
+        title: "The Problem & 6 Ecosystem Players",
+        subtitle: "Mapping who's hurt by the asymmetry, and the quantifiable financial damage",
+        metric: { num: "$500K+", label: "Average Setup Penalty", sub: "Per entrant across delays, advisory fees, and mis-hires" },
+        points: [
+          "The 6 Players: 1) Global Entrants, 2) Tech Recruiters (Flexiple), 3) Real Estate Brokers, 4) EOR Providers, 5) Legal/Tax Firms, 6) State Governments.",
+          "Global Entrants lose 6 to 9 months in discovery and vendor vetting ($350k – $1M+ in executive burn and delayed product time-to-market).",
+          "The 'Consultant Tax': Big-4 and boutique brokers charge $150k – $300k for static, biased slide decks.",
+          "Mis-hire & Attrition Penalty: 30%+ Year 1 attrition caused by misaligned comp bands and 40% notice-period dropouts.",
+          "State Policy Inefficiency: 70%+ of new GCCs miss out on ₹5–25 Cr in state capital and payroll subsidies due to policy opacity."
+        ],
+        notes: "Here we map the 6 players. Notice how the information asymmetry hits the entrant hardest: they burn $350k-$1M+ in executive time and pay $150k-$300k in consultant retainers just to evaluate feasibility. Meanwhile, state governments offer up to ₹25 Cr in subsidies that 70% of entrants don't even know exist."
+      },
+      {
+        badge: "Current Workarounds",
+        title: "What Players Do Today (Status Quo)",
+        subtitle: "High-fee advisory retainers, biased whisper networks, and stale annual PDF reports",
+        metric: { num: "18 Mo", label: "Report Data Lag", sub: "Annual industry PDFs are obsolete before publishing" },
+        points: [
+          "Status Quo 1: High-Fee Consultancies (ANSR, Zinnov, Big-4) — Charge $100k–$300k retainers with severe principal-agent conflicts (hidden kickbacks from landlords).",
+          "Status Quo 2: Whisper Networks & Expat Alumni — Casual WhatsApp groups and LinkedIn DMs ('Who did you use in Bangalore?'). Unstandardized and subjective.",
+          "Status Quo 3: Annual Macro Reports (NASSCOM, CBRE, JLL) — Macro aggregate data, zero real-time operational utility or role-level compensation bands.",
+          "Status Quo 4: Manual MCA & ROC Filings — Sifting through government legal portals manually; lacks tech context, tech stack telemetry, or headcount."
+        ],
+        notes: "Current workarounds are completely broken. Traditional consultancies charge exorbitant retainers and often take undisclosed referral kickbacks from landlords. Meanwhile, annual PDF reports from CBRE or NASSCOM are already 12-18 months out of date. Everything else runs on whisper networks."
+      },
+      {
+        badge: "Strategic Opportunities",
+        title: "Opportunity Evaluation & Prioritization",
+        subtitle: "Which opportunities matter most and where to build the defensible moat",
+        metric: { num: "9.6/10", label: "Talent Synergy Score", sub: "Hiring is the #1 recurring budget item for every GCC" },
+        points: [
+          "Opportunity 1: Actionable GCC Database & Intelligence Hub (Score: 9.2/10) — High organic search volume, natural SEO authority, establishes brand trust.",
+          "Opportunity 2: Interactive Setup Feasibility & Cost Simulator (Score: 9.4/10) — Converts passive traffic into high-intent qualified leads in minutes.",
+          "Opportunity 3: Verified Partner Network & RFP Exchange (Score: 8.5/10) — Strong monetization via transaction referral take-rates (5-10%).",
+          "Opportunity 4: Talent Benchmarking & Direct Pod Placement (Score: 9.6/10) — Maximum synergy with Flexiple's existing talent infrastructure!",
+          "The Strategic Wedge: Data is the top-of-funnel hook; Flexiple Tech Talent & Advisory is the high-margin commercial engine."
+        ],
+        notes: "We systematically prioritized 4 opportunities using an Impact vs. Feasibility vs. Flexiple Synergy matrix. The sweet spot is pairing a high-intent Directory & Feasibility Simulator (the top-of-funnel hook) with Flexiple's premier tech talent placement engine (the high-margin monetization engine)."
+      },
+      {
+        badge: "Product Vision",
+        title: "The Solution: GCC Compass by Flexiple",
+        subtitle: "The Operating System & Single Source of Truth for India's GCCs",
+        metric: { num: "4 Pillars", label: "Integrated System", sub: "Directory + City Benchmarks + Cost Engine + Partner RFP" },
+        points: [
+          "Pillar 1: Verified GCC Intelligence Directory — Search 2,000+ centres by sector, headcount, tech stack, leadership, and maturity stage.",
+          "Pillar 2: City & Incentive Comparator — Head-to-head benchmarking across 8+ cities on talent depth, rent (₹/sqft), attrition, and state policy grants.",
+          "Pillar 3: Dynamic Setup Feasibility Simulator — Model Direct Captive vs BOT vs EOR vs Hybrid, with CapEx, OpEx, and timeline breakdowns.",
+          "Pillar 4: Verified Partner & Talent Exchange — Vetted providers (Legal, Real Estate, EOR) + Flexiple Top 1% tech engineering squads."
+        ],
+        notes: "This is the solution architecture for GCC Compass. It combines 4 interconnected engines: 1) Verified GCC Directory, 2) Multi-City & Subsidy Comparator, 3) Real-time Setup Cost & Feasibility Simulator, and 4) A Verified Partner RFP Exchange."
+      },
+      {
+        badge: "Target Audience",
+        title: "Target ICP & Beachhead Wedge",
+        subtitle: "Who we build for first: The $50M–$2B Global Tech Enterprise",
+        metric: { num: "6-12 Mo", label: "Board Mandate Window", sub: "Where speed-to-market is valued over bespoke consulting" },
+        points: [
+          "Primary ICP: US/EU VP of Engineering, CTO, or Head of Shared Services at tech-enabled companies ($50M – $2B revenue).",
+          "Key Characteristics: Strict 6–12 month board mandate to unlock India's engineering talent; lacks boots on the ground; cannot justify a $250k consulting fee.",
+          "Why This ICP First? Highest decision velocity (weeks, not years); desperate for unvarnished data on Bangalore vs Hyderabad vs Pune vs Tier-2.",
+          "High Conversion to Flexiple: They need immediate, pre-vetted senior tech talent to lead architecture and ship Day-1 software."
+        ],
+        notes: "For whom first? We deliberately chose US/EU Mid-Market tech companies ($50M to $2B ARR). Fortune 50 mega-corporations can afford $500k McKinsey engagements; mid-market CTOs cannot. They have a strict 6-12 month board mandate, need immediate talent, and move fast."
+      },
+      {
+        badge: "Value Proposition",
+        title: "Positioning & Stakeholder Switching Triggers",
+        subtitle: "Why each stakeholder chooses GCC Compass over what they use today",
+        metric: { num: "10x Faster", label: "Time-to-Feasibility", sub: "Instant self-serve modeling vs 6-month consulting delays" },
+        points: [
+          "Global Entrants: Self-serve feasibility and vetted partner RFPs in minutes, with zero hidden referral markups or broker lock-in.",
+          "GCC Country Heads: Real-time peer compensation bands and tech stack telemetry to defend headcount budget to global HQ.",
+          "Service Providers (EOR, Legal, RE): Qualified, high-intent enterprise inbound deals actively budgeting a launch, replacing cold outbound.",
+          "State Governments (Karnataka, Telangana, TN): Direct channel to international investors to showcase state IT incentives and attract FDI.",
+          "Flexiple: Owns the top-of-funnel for the most lucrative tech talent segment in the world, positioning as a strategic partner."
+        ],
+        notes: "Positioning is all about switching triggers. Global entrants switch because we are 10x faster and transparent. GCC country heads switch to get peer comp benchmarks to defend budgets. Verified partners switch because we deliver warm, pre-qualified enterprise RFPs instead of cold outbound."
+      },
+      {
+        badge: "Business Model",
+        title: "Commercial Architecture & Growth Flywheel",
+        subtitle: "Freemium intelligence fueling high-margin talent and enterprise monetization",
+        metric: { num: "$250K+", label: "Enterprise LTV", sub: "When intelligence converts into 20-50 tech engineering placements" },
+        points: [
+          "Stream 1: Flexiple Talent Placements & Dedicated Pods (Primary Revenue) — 15–20% placement fees + monthly squad margins ($50k–$250k LTV).",
+          "Stream 2: Verified Partner Marketplace Fees — 5–10% referral commission on high-value legal, EOR, and commercial real estate transactions.",
+          "Stream 3: GCC Compass Pro Subscriptions — $6,000 – $18,000/year for enterprise leaders and PE/VC firms seeking real-time talent telemetry.",
+          "The Flywheel: Free verified intelligence attracts global CIOs → High traffic attracts top service providers → Drives high-margin talent mandates to Flexiple."
+        ],
+        notes: "Business model and Flexiple synergy: The intelligence platform is freemium to maximize top-of-funnel reach. The big revenue comes from enterprise talent placements and dedicated pods, generating $50k to $250k LTV per client, alongside marketplace RFP commission and premium subscriptions."
+      },
+      {
+        badge: "Working Prototype",
+        title: "Prototype Demonstration & Features Built",
+        subtitle: "A fully functional, interactive operating system running live",
+        metric: { num: "100%", label: "Functional App", sub: "Interactive React application built with live dataset" },
+        points: [
+          "Live GCC Directory: Filter 20+ deeply profiled centres by sector, headcount tier, city, and tech stack tags with detailed modal dossiers.",
+          "Multi-City & Incentive Benchmark: Side-by-side comparison of Bengaluru, Hyderabad, Pune, Coimbatore with real estate and state subsidies.",
+          "Interactive Setup Cost & Runway Calculator: Dynamic sliders for headcount, operational models, and real estate, computing CapEx, OpEx, and 3-Year TCO.",
+          "Verified Partner Directory & Instant RFP: Live inquiry submission modal routing requests directly to vetted partners and Flexiple.",
+          "Talent Benchmarking Engine: CTC compensation distributions across SDE-3, ML, Architects, and DevOps roles."
+        ],
+        notes: "Walk the audience through the working prototype we built! It is not just mockups—it is a functional React application with real GCC records, multi-city subsidy comparisons, and an interactive cost calculator that lets leaders model Capex/Opex live."
+      },
+      {
+        badge: "Roadmap & Metrics",
+        title: "Execution Roadmap & Success Metrics",
+        subtitle: "Phased plan from MVP to India's Sovereign GCC Platform",
+        metric: { num: "$1.5M+", label: "Target Influenced ARR", sub: "Within first 12 months of platform launch" },
+        points: [
+          "Q1 (Days 1–90): Launch GCC Directory & Cost Calculator; index 1,000 verified centres; achieve 10,000 monthly enterprise visits.",
+          "Q2 (Days 91–180): Onboard 50 verified ecosystem partners; launch 1-Click RFP engine; convert 15 GCC clients into Flexiple talent contracts.",
+          "Q3 (Days 181–360): Launch State Government Portal with automated subsidy pre-qualification; expand into Tier-2 micro-hubs.",
+          "North Star Metrics: 1) Enterprise simulations run (>500/mo), 2) Qualified RFPs routed (>100/quarter), 3) Influenced Talent ARR ($1.5M+)."
+        ],
+        notes: "Our phased 12-month roadmap: Day 90 is directory & calculator traction; Day 180 activates the partner marketplace and first 15 talent contracts; Day 360 scales government subsidy integration and targets $1.5M+ in influenced talent ARR for Flexiple."
+      }
+    ];
+
+    let currentSlide = 0;
+
+    function renderSlide() {
+      const s = slides[currentSlide];
+      document.getElementById('slideIndicator').innerText = `SLIDE ${currentSlide + 1} OF ${slides.length}`;
+      document.getElementById('speakerNotesText').innerText = s.notes;
+
+      const html = `
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">
+              ${s.badge}
+            </span>
+            <span class="text-xs text-slate-500 font-mono">GCC Compass • Flexiple Strategy</span>
+          </div>
+          <div>
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">${s.title}</h2>
+            <p class="text-base text-slate-400 font-medium mt-1">${s.subtitle}</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 my-6">
+          <div class="lg:col-span-2 bg-slate-950/70 border border-slate-800 rounded-2xl p-6 space-y-3">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-blue-400">Core Strategic Insights</h4>
+            <ul class="space-y-3 text-xs sm:text-sm text-slate-300">
+              ${s.points.map(p => `
+                <li class="flex items-start space-x-2.5 leading-relaxed">
+                  <span class="text-blue-500 font-bold mt-0.5">▸</span>
+                  <span>${p}</span>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+
+          <div class="bg-gradient-to-br from-blue-950/40 via-slate-900 to-indigo-950/40 border border-blue-800/40 rounded-2xl p-6 text-center flex flex-col justify-center shadow-lg">
+            <p class="text-[10px] font-bold uppercase tracking-widest text-blue-400 mb-1">Key Benchmark</p>
+            <div class="text-4xl sm:text-5xl font-black text-white font-mono my-2">${s.metric.num}</div>
+            <p class="text-sm font-bold text-slate-200">${s.metric.label}</p>
+            <p class="text-xs text-slate-400 mt-1">${s.metric.sub}</p>
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
+          <span>Flexiple Product Intern Assignment</span>
+          <span>Slide ${currentSlide + 1} of ${slides.length}</span>
+        </div>
+      `;
+
+      document.getElementById('slideContent').innerHTML = html;
+      renderPills();
+    }
+
+    function renderPills() {
+      const pillsContainer = document.getElementById('slidePills');
+      pillsContainer.innerHTML = slides.map((s, idx) => `
+        <button onclick="goToSlide(${idx})" class="w-6 h-6 rounded-md text-xs font-bold transition-all ${
+          idx === currentSlide 
+            ? 'bg-blue-600 text-white shadow-md ring-2 ring-blue-400' 
+            : 'bg-slate-800 text-slate-400 hover:text-white'
+        }">
+          ${idx + 1}
+        </button>
+      `).join('');
+    }
+
+    function nextSlide() {
+      if (currentSlide < slides.length - 1) {
+        currentSlide++;
+        renderSlide();
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 0) {
+        currentSlide--;
+        renderSlide();
+      }
+    }
+
+    function goToSlide(idx) {
+      currentSlide = idx;
+      renderSlide();
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'Space') nextSlide();
+      if (e.key === 'ArrowLeft') prevSlide();
+    });
+
+    renderSlide();
+  </script>
+</body>
+</html>
